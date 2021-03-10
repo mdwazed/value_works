@@ -11,12 +11,12 @@ from visual.serializers.profit_loss_serializers import ProfitLossSerializer
 
 class ProfitLossListView(APIView):
     def get(self, request):
-        """ return a list of customer data """
+        """ return a list of profit loss data """
         serializer =  ProfitLossSerializer(ProfitLoss.objects.all(), many=True)
         return Response(serializer.data) 
 
     def post(self, request):
-        """ add a new marketing data """
+        """ add a new profit loss data """
         serializer = ProfitLossSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -39,6 +39,7 @@ class ProfitLossDetailView(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
+        """ update specific profit loss object """
         profitloss = self.get_object(pk)
         serializer = ProfitLossSerializer(profitloss, data=request.data)
         if serializer.is_valid():

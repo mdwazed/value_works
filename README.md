@@ -10,7 +10,8 @@ Backend:
 4. cd back_end to navigate to the back_end dir.
 5. run folowing command with sudo previlazed user or with sudo:
 6. sudo docker-compose up
-7. Two docker container (Nginx, Django) will start running.
+7. Two docker container (Nginx, Django) will start running and serve the web application backend.
+8. Ensure port 80 is not in use in case of error.
 
 Frontend:
 1. Open the frontend dir to a new terminal or

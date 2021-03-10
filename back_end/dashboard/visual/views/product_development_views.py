@@ -13,12 +13,12 @@ from visual.serializers.product_development_serializer import ProductDevelopment
 class ProductDevelopmentListView(APIView):
 
     def get(self, request):
-        """ return a list of marketing data """
+        """ return a list of prod dev data """
         serializer =  ProductDevelopmentSerializer(ProductDevelopment.objects.all(), many=True)
         return Response(serializer.data) 
 
     def post(self, request):
-        """ add a new marketing data """
+        """ add a new prod dev data """
         serializer = ProductDevelopmentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

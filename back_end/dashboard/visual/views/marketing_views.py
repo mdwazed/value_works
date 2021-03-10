@@ -35,12 +35,13 @@ class MarketingDetailView(APIView):
             raise Http404
 
     def get(self, request, pk, format=None):
-        """ returns a specific customer """
+        """ returns a specific marketing data """
         marketing = self.get_object(pk)
         serializer = MarketingSerializer(marketing)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
+        """ update specific marketing data """
         marketing = self.get_object(pk)
         serializer = MarketingSerializer(marketing, data=request.data)
         if serializer.is_valid():

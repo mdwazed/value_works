@@ -12,12 +12,12 @@ from visual.serializers.customer_serializers import CustomerSerializer
 
 class CustomerListView(APIView):
     def get(self, request):
-        """ return a list of customer data """
+        """ return a list of customer """
         serializer =  CustomerSerializer(Customers.objects.all(), many=True)
         return Response(serializer.data) 
 
     def post(self, request):
-        """ add a new marketing data """
+        """ add a new customer """
         serializer = CustomerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -39,6 +39,7 @@ class CustomerDetailView(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
+        """ update customer data of given pk """
         customer = self.get_object(pk)
         serializer = CustomerSerializer(customer, data=request.data)
         if serializer.is_valid():
@@ -47,6 +48,7 @@ class CustomerDetailView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
+        """ delete customer of given pk """
         customer = self.get_object(pk)
         customer.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -55,7 +57,7 @@ class CustomerDetailView(APIView):
 class CustomerAggregateView(APIView):
 
     def get(self, request):
-        """ returns aggregated data of total new customer  """
+        """ returns total new customer and total customer """
         response = {}
         total_new_customer = Customers.objects.all().aggregate(Sum('net_new_customer'))
         response['total_new_customer'] = total_new_customer['net_new_customer__sum']

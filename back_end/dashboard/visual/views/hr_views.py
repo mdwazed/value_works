@@ -1,3 +1,5 @@
+from django.http import Http404
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,12 +10,12 @@ from visual.serializers.hr_serializers import HrSerializer
 
 class HrListView(APIView):
     def get(self, request):
-        """ return a list of customer data """
+        """ return a list of hr data """
         serializer =  HrSerializer(Hr.objects.all(), many=True)
         return Response(serializer.data) 
 
     def post(self, request):
-        """ add a new marketing data """
+        """ add a new hr data """
         serializer = HrSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -36,6 +38,7 @@ class HrDetailView(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
+        """ update hr data of given pk """
         hr = self.get_object(pk)
         serializer = HrSerializer(hr, data=request.data)
         if serializer.is_valid():

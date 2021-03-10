@@ -1,3 +1,5 @@
+from django.http import Http404
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,12 +10,12 @@ from visual.serializers.product_operation_serializer import ProductOperationSeri
 
 class ProductOperationListView(APIView):
     def get(self, request):
-        """ return a list of customer data """
+        """ return a list of producr operation data """
         serializer =  ProductOperationSerializer(ProductOperation.objects.all(), many=True)
         return Response(serializer.data) 
 
     def post(self, request):
-        """ add a new marketing data """
+        """ add a new product operation data """
         serializer = ProductOperationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

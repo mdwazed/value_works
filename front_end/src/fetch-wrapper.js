@@ -1,3 +1,5 @@
+// fetch wrapper to fetch data from backend
+
 export const fetchWrapper = {
     get,
     post,

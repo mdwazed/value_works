@@ -1,6 +1,6 @@
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
-
+// rechar library barchart to display bar chart 
 export const Chart = ({data, barDataKey  }) => {
            
     return(

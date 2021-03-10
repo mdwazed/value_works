@@ -7,9 +7,12 @@ function App() {
     
     <div className="App">
       <div>
+        {/* dashboard title */}
         <h1>Valueworks Dashboard</h1>
       </div>
+      {/* aggregation panel  */}
       <SummaryWrapper />
+      {/* marketing charts wrapper */}
       <ChartWrapper
           label="Marketing"
           resource="marketing"
@@ -19,6 +22,7 @@ function App() {
              {key:'lead_ratio', label:'Lead Ratio (%)'},
             ]}
         />
+        {/* customer charts wrapper */}
         <ChartWrapper
           label="Customer"
           resource="customer"
@@ -28,6 +32,7 @@ function App() {
             { key:'num_of_customer', label:'Number of Customer (Count)'} 
             ]}
         />
+        {/* product development chart wrapper */}
        <ChartWrapper
           label="Product development"
           resource="product-development"
@@ -37,6 +42,7 @@ function App() {
             { key:'test_coverage', label:'Test Coverage (%)'}, 
           ]}
         />
+        {/* product operation chart wrapper */}
          <ChartWrapper
           label="Product Operartion"
           resource="product-operation"
@@ -48,6 +54,7 @@ function App() {
             { key:'open_support_ticket', label:'open Support Ticket (Count)'}, 
           ]}
         />
+        {/* hr chart wrapper */}
         <ChartWrapper
           label="HR"
           resource="hr"
@@ -58,6 +65,7 @@ function App() {
             { key:'attrition', label:'Attrition (%)'}, 
           ]}
         />
+        {/* profit loss chart wrapper */}
         <ChartWrapper
           label="Profit Loss"
           resource="profit-loss"
